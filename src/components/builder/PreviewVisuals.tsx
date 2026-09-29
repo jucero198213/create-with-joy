@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { VisualKind } from "./types";
 
 const MONTHS = ["Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
@@ -221,4 +221,3 @@ export function VisualBody({ kind, compact }: { kind: VisualKind; compact?: bool
   }
 }
 
-export type { CSSProperties };
