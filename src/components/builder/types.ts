@@ -165,7 +165,7 @@ function hexToRgb(hex: string): [number, number, number] {
 function mix(hex: string, target: string, t: number): string {
   const a = hexToRgb(hex);
   const b = hexToRgb(target);
-  const out = a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  const out = a.map((v, i) => Math.round(v + ((b[i] ?? 0) - v) * t));
   return "#" + out.map((v) => v.toString(16).padStart(2, "0")).join("").toUpperCase();
 }
 

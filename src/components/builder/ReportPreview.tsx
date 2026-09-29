@@ -89,7 +89,7 @@ function NavItem({
 
 function PreviewContent({ state, page }: { state: BuilderState; page: ReportPage }) {
   const showData = state.previewMode === "data";
-  const layout = VISUAL_LAYOUTS.find((l) => l.value === state.visualLayout) ?? VISUAL_LAYOUTS[0];
+  const layout = VISUAL_LAYOUTS.find((l) => l.value === state.visualLayout) ?? VISUAL_LAYOUTS[0]!;
   const kpis = KPIS.slice(0, state.topCards);
 
   return (
@@ -161,7 +161,8 @@ export function ReportPreview({ state }: { state: BuilderState }) {
     return () => ro.disconnect();
   }, []);
 
-  const page = state.pages.find((p) => p.id === state.activePage) ?? state.pages[0];
+  const page = state.pages.find((p) => p.id === state.activePage) ??
+    state.pages[0] ?? { id: 0, name: "", icon: "file" as const };
   const dark = state.reportBackground === "dark";
   const { menuType } = state;
 

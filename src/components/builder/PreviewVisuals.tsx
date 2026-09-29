@@ -105,7 +105,7 @@ const STORES = [
   { store: "Batel", revenue: "R$ 397 mil", pct: 101 },
 ];
 
-function TableChart({ compact }: { compact?: boolean }) {
+function TableChart({ compact }: { compact?: boolean | undefined }) {
   const cols = compact ? "1.2fr 0.7fr 1fr" : "1.1fr 1fr 0.7fr 1.2fr";
   return (
     <div className="flex h-full flex-col text-[11px]">
@@ -157,7 +157,7 @@ function StackedChart() {
   const max = Math.max(...CATEGORIES.map((c) => c.values.reduce((a, b) => a + b, 0)));
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <Legend items={YEARS.map((y, i) => ({ label: y, className: YEAR_TONES[i] }))} />
+      <Legend items={YEARS.map((y, i) => ({ label: y, className: YEAR_TONES[i] ?? "" }))} />
       <div className="flex flex-1 flex-col justify-around gap-0.5">
         {CATEGORIES.map((c) => {
           const total = c.values.reduce((a, b) => a + b, 0);
@@ -206,7 +206,7 @@ export const VISUAL_TITLES: Record<VisualKind, string> = {
   columns: "Ticket médio (R$)",
 };
 
-export function VisualBody({ kind, compact }: { kind: VisualKind; compact?: boolean }): ReactNode {
+export function VisualBody({ kind, compact }: { kind: VisualKind; compact?: boolean | undefined }): ReactNode {
   switch (kind) {
     case "line":
       return <LineChart />;
